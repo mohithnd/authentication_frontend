@@ -6,6 +6,7 @@ import Login from "./Pages/Login.jsx";
 import SignUp from "./Pages/Signup.jsx";
 import Home from "./Pages/Home.jsx";
 import Admin from "./Pages/Admin.jsx";
+import Protection from "./Pages/Protection.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/admin",
-        element: <Admin />,
+        element: (
+          <Protection>
+            <Admin />
+          </Protection>
+        ),
       },
     ],
   },
