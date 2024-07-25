@@ -1,12 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Contexts/AuthContext";
 
 function Admin() {
-  const navigate = useNavigate();
-
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
+  const { logout } = useContext(AuthContext);
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -16,7 +12,7 @@ function Admin() {
           This Is A Test Admin Page For Learning Authentication System.
         </div>
         <button
-          onClick={handleLogOut}
+          onClick={logout}
           className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
         >
           Log Out

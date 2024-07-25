@@ -1,10 +1,25 @@
-import { Outlet } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import Protection from "./Pages/Protection";
+import Admin from "./Pages/Admin";
 
 function App() {
   return (
-    <>
-      <Outlet />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/admin"
+        element={
+          <Protection>
+            <Admin />
+          </Protection>
+        }
+      />
+    </Routes>
   );
 }
 

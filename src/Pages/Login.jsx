@@ -1,43 +1,14 @@
-import axios from "axios";
-import { useState } from "react";
-import { API_BASE } from "../Configs/ServerConfig";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthContext";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const { login, error, email, setEmail, password, setPassword, isCalling } =
+    useContext(AuthContext);
 
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError("");
-
-    try {
-      const response = await axios.post(`${API_BASE}/users/signin`, {
-        email,
-        password,
-      });
-
-      if (response.data.success == false) {
-        throw new Error(response.data.error.explanation);
-      }
-
-      localStorage.setItem("token", response.data.data);
-      setEmail("");
-      setPassword("");
-      navigate("/admin");
-    } catch (err) {
-      setError(
-        err?.response?.data?.error?.explanation ||
-          "An error occurred during login."
-      );
-    } finally {
-      setIsLoading(false);
-    }
+    login();
   };
 
   return (
@@ -92,9 +63,9 @@ function Login() {
             <button
               type="submit"
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
-              disabled={isLoading}
+              disabled={isCalling}
             >
-              {isLoading ? "Logging in..." : "Login"}
+              {isCalling ? "Logging in..." : "Login"}
             </button>
           </div>
         </form>

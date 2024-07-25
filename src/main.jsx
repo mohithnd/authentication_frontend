@@ -1,42 +1,13 @@
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Login from "./Pages/Login.jsx";
-import SignUp from "./Pages/Signup.jsx";
-import Home from "./Pages/Home.jsx";
-import Admin from "./Pages/Admin.jsx";
-import Protection from "./Pages/Protection.jsx";
-
-const appRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/signup",
-        element: <SignUp />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/admin",
-        element: (
-          <Protection>
-            <Admin />
-          </Protection>
-        ),
-      },
-    ],
-  },
-]);
+import { BrowserRouter } from "react-router-dom";
+import { AuthProider } from "./Contexts/AuthContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={appRouter} />
+  <BrowserRouter>
+    <AuthProider>
+      <App />
+    </AuthProider>
+  </BrowserRouter>
 );
