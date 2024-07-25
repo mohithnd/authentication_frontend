@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
-import Protection from "./Pages/Protection";
 import Admin from "./Pages/Admin";
+import Protection from "./Protection";
 
 function App() {
   return (

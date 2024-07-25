@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../Contexts/AuthContext";
-import LoadingSpinner from "./LoadingSpinner";
+import { AuthContext } from "./Contexts/AuthContext";
+import LoadingSpinner from "./Pages/LoadingSpinner";
 
 function Protection({ children }) {
   const location = useLocation();

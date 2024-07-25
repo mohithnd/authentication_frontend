@@ -88,7 +88,7 @@ export const AuthProider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
-    navigate("/login");
+    navigate("/");
   };
 
   const signup = async () => {

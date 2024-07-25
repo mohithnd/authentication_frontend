@@ -21,91 +21,67 @@ function SignUp() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
-            Create Account
-          </h2>
-          {error && (
-            <div className="p-4 rounded-md bg-red-100 text-red-700">
-              {error}
-            </div>
-          )}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
+    <div className="min-h-screen bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+          Sign Up
+        </h1>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700 mb-2">
               Email
             </label>
             <input
-              id="email"
               type="email"
-              placeholder="Enter Email"
+              id="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value.trim())}
-              className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
-            focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-gray-700 mb-2">
               Password
             </label>
             <input
-              id="password"
               type="password"
-              placeholder="Enter Password"
+              id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value.trim())}
-              className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
-            focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div>
-            <label
-              htmlFor="password2"
-              className="block text-sm font-medium text-gray-700"
-            >
+          <div className="mb-6">
+            <label htmlFor="password2" className="block text-gray-700 mb-2">
               Confirm Password
             </label>
             <input
-              id="password2"
               type="password"
-              placeholder="Confirm Password"
+              id="password2"
               value={password2}
-              onChange={(e) => setPassword2(e.target.value.trim())}
-              className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md text-sm shadow-sm placeholder-gray-400
-            focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              onChange={(e) => setPassword2(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div>
-            <button
-              type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
-              disabled={isCalling}
-            >
-              {isCalling ? "Signing up..." : "Sign Up"}
-            </button>
-          </div>
+          <button
+            type="submit"
+            disabled={isCalling}
+            className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-300"
+          >
+            {isCalling ? "Signing up..." : "Sign Up"}
+          </button>
         </form>
         <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
-            Already have an account?{" "}
-            <Link
-              to="/login"
-              className="font-medium text-blue-600 hover:text-blue-500"
-            >
-              Log in
-            </Link>
-          </p>
+          <Link to="/" className="text-blue-600 hover:underline mr-4">
+            Back to Home
+          </Link>
+          <Link to="/login" className="text-blue-600 hover:underline">
+            Login
+          </Link>
         </div>
       </div>
     </div>
