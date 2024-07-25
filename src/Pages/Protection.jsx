@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContext";
+import LoadingSpinner from "./LoadingSpinner";
 
 function Protection({ children }) {
   const location = useLocation();
@@ -12,7 +13,7 @@ function Protection({ children }) {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (!isLoggedIn) {
