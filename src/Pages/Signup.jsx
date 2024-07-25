@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { API_BASE } from "../Configs/ServerConfig";
 
 function SignUp() {
@@ -9,6 +9,8 @@ function SignUp() {
   const [password2, setPassword2] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +36,7 @@ function SignUp() {
       setEmail("");
       setPassword("");
       setPassword2("");
+      navigate("/login");
     } catch (err) {
       setError(
         err?.response?.data?.error?.explanation ||

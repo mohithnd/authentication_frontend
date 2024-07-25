@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
 import { API_BASE } from "../Configs/ServerConfig";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ function Login() {
       localStorage.setItem("token", response.data.data);
       setEmail("");
       setPassword("");
+      navigate("/admin");
     } catch (err) {
       setError(
         err?.response?.data?.error?.explanation ||
